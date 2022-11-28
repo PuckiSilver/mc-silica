@@ -28,6 +28,7 @@ out vec2 texCoord2;
 out vec4 normal;
 
 void main() {
+    //// vanilla ////
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
     vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
@@ -36,4 +37,8 @@ void main() {
     texCoord1 = UV1;
     texCoord2 = UV2;
     normal = ProjMat * ModelViewMat * vec4(Normal, 0.0);
+
+    //// mc-silica ////
+    bool isHotbar = -0.2 < gl_Position.z && gl_Position.z < -0.1;
+    if (isHotbar) vertexColor = vec4(0,1,0,1); // debug
 }
