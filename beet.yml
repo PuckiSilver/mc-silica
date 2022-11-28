@@ -7,9 +7,12 @@ require:
   - bolt
 
 data_pack:
+  name: mc-silica-dp
   load: src
-  name: mc-silica
-  zipped: false
+
+resource_pack:
+  name: mc-silica-rp
+  load: src
 
 pipeline:
   - mecha
