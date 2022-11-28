@@ -27,6 +27,9 @@ out vec2 texCoord1;
 out vec2 texCoord2;
 out vec4 normal;
 
+flat out int cdUntil;
+flat out int cdr;
+
 void main() {
     //// vanilla ////
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
@@ -39,6 +42,16 @@ void main() {
     normal = ProjMat * ModelViewMat * vec4(Normal, 0.0);
 
     //// mc-silica ////
+    cdUntil = -1;
+    cdr = -1;
+
     bool isHotbar = -0.2 < gl_Position.z && gl_Position.z < -0.1;
-    if (isHotbar) vertexColor = vec4(0,1,0,1); // debug
+
+    if (isHotbar) {
+        if (Color.r < 0.999 && Color.g < 0.999 && Color.b < 0.999) {
+            int tint = int(Color.r*255 * 65536 + Color.g*255 * 256 + Color.b*255 + 0.5);
+            cdUntil = tint % 4096;
+            cdr = tint >> 12;
+        }
+    }
 }
