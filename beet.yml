@@ -1,0 +1,19 @@
+name: mc-silica
+author: PuckiSilver
+description: Dynamic cooldown display
+version: v1.0.0
+output: build
+require:
+  - bolt
+
+data_pack:
+  load: src
+  name: mc-silica
+  zipped: false
+
+pipeline:
+  - mecha
+
+meta:
+  bolt:
+    entrypoint: silica:main
