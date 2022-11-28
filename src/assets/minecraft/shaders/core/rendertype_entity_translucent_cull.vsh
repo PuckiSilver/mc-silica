@@ -37,9 +37,9 @@ int getMaxCd(int green) {                   // retrieve max cooldown information
     if (scaled < 1000) {
         value = scaled;                     // green of 1 - 99 => 0.1 - 9.9
     } else if (scaled > 1500) {
-        value = (scaled - 1500) * 5 + 600;  // green of 151 - 255 => 65.0 - 625.0 (10 min 25sec)
+        value = (scaled - 1500) * 50 + 6000;  // green of 151 - 255 => 65.0 - 625.0 (10 min 25sec)
     } else {
-        value = scaled - 900;               // green of 100 - 150 => 10.0 - 60.0
+        value = (scaled - 900) * 10;               // green of 100 - 150 => 10.0 - 60.0
     }
     return value;
 }
@@ -65,13 +65,12 @@ void main() {
             float cdr = (tint >> 14) / 1000.;           // upper 10 bits
 
             // grab info from texture
-            ivec2 texSize = textureSize(Sampler0, 0);
-            vec4 pixel = texelFetch(Sampler0, ivec2(texCoord0 * texSize + vec2(0.5)), 0);
+            vec4 pixel = texelFetch(Sampler0, ivec2(texCoord0 * textureSize(Sampler0, 0)), 0);  // get corner pixel
             ivec4 pixelScaled = ivec4(pixel * 255 + vec4(0.5));
             if (pixelScaled.r == 15 && pixelScaled.a == 19) {           // check for correct texture
-                float cdMax = getMaxCd(pixelScaled.g) / 12000. * cdr;
+                float cdMax = getMaxCd(pixelScaled.g) / 120000. * cdr;
                 float time = GameTime;
-                if (cdUntil - cdMax < 0 && time > 0.5) time -= 0.5;     // handle wrapping
+                if (cdUntil - cdMax < 0 && time > 0.5) time += cdMax - cdUntil - 1;     // handle wrapping
                 cooldown = (cdUntil - time) / cdMax;
             }
         }
