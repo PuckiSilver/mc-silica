@@ -16,7 +16,17 @@ resource_pack:
 
 pipeline:
   - mecha
+  - plugins.silica.generateOverlay
 
 meta:
   bolt:
     entrypoint: silica:main
+  mc-silica:
+    - size: [16, 16]
+      cdMax: 5.8
+      shape: linear
+      save: minecraft:item/overlay3
+    - size: [16, 16]
+      cdMax: 5.8
+      shape: plugins/gradient.png
+      save: minecraft:item/overlay2
