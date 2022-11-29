@@ -1,17 +1,30 @@
 [
     {
-      "function": "minecraft:copy_nbt",
-      "source": {
+        "function": "minecraft:copy_nbt",
+        "source": {
         "type": "minecraft:storage",
         "source": "mc:silica"
-      },
-      "ops": [
+        },
+        "ops": [
         {
-          "source": "display",
-          "target": "display",
-          "op": "replace"
+            "source": "display",
+            "target": "display",
+            "op": "replace"
         }
-      ]
+        ]
+    },
+    {
+        "function": "minecraft:copy_nbt",
+        "source": {
+        "type": "minecraft:storage",
+        "source": "mc:silica"
+        },
+        "ops": [
+        {
+            "source": "mc-silica",
+            "target": "mc-silica",
+            "op": "replace"
+        }
+        ]
     }
-  ]
-  
+]

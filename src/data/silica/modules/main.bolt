@@ -10,7 +10,12 @@ function silica:cooldown:
     # .cooldown     Cool-down in 0.1 seconds (600 = 1 minute)
     # .cdr          Cool-down reduction in 0.1% (1000 = 100%)
 
-    execute store result score .cdUntil mc-silica run time query gametime
+    execute store result score .realUntil mc-silica store result score .cdUntil mc-silica run time query gametime
+    
+    scoreboard players operation #cooldown mc-silica = .cooldown mc-silica
+    scoreboard players operation #cooldown mc-silica *= #2 mc-silica
+    scoreboard players operation .realUntil mc-silica += #cooldown mc-silica
+
     scoreboard players operation .cdUntil mc-silica /= #2 mc-silica
     scoreboard players operation .cdUntil mc-silica += .cooldown mc-silica
     scoreboard players operation .cdUntil mc-silica %= #12000 mc-silica
@@ -21,4 +26,15 @@ function silica:cooldown:
 
     data merge storage mc:silica {display:{color:0}}
     execute store result storage mc:silica display.color int 1 run scoreboard players get .cdUntil mc-silica
+    data merge storage mc:silica {mc-silica:0}
+    execute store result storage mc:silica mc-silica int 1 run scoreboard players get .realUntil mc-silica
     item modify entity @s weapon.mainhand silica:set_cd_until
+
+function silica:clear_cooldown:
+    execute store result score .gametime mc-silica run time query gametime
+    for i in range(9):
+        execute store result score #readCd mc-silica run data get entity @s f'Inventory[{{Slot:{i}b}}].tag.mc-silica'
+        execute unless score #readCd mc-silica matches 0 if score .gametime mc-silica > #readCd mc-silica run item modify entity @s f'hotbar.{i}' silica:remove_cd
+    for i in range(27):
+        execute store result score #readCd mc-silica run data get entity @s f'Inventory[{{Slot:{i+9}b}}].tag.mc-silica'
+        execute unless score #readCd mc-silica matches 0 if score #readCd mc-silica > .gametime mc-silica run item modify entity @s f'inventory.{i}' silica:remove_cd
