@@ -26,7 +26,7 @@ meta:
       cdMax: 5.8
       shape: linear
       save: minecraft:item/overlay3
-    - size: [16, 16]
+    - size: [128, 128]
       cdMax: 5.8
-      shape: plugins/gradient.png
+      shape: plugins/gradient_300x300.png
       save: minecraft:item/overlay2

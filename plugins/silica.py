@@ -1,14 +1,10 @@
-from typing import Text, final
 from beet import Context, Texture
 from PIL import Image
 
 def generateImage(overlay):
-    print(overlay)
-    #, save:str, cdMax:float, shape:str="linear", size:tuple[int,int]=(16,16)
     size = tuple(overlay.get('size', [16, 16]))
     cdMax = overlay.get('cdMax', 15)
     shape = overlay.get('shape', "linear")
-
 
     green = 0
     if cdMax < 10:
@@ -27,7 +23,7 @@ def generateImage(overlay):
     elif shape == "radial":
         b = Image.radial_gradient("L").resize(size)
     else:
-        b = Image.open(shape).getchannel("B")
+        b = Image.open(shape).convert("L").resize(size, Image.Resampling.NEAREST)
 
     overlay = Image.merge("RGBA", [r, g, b, a])
 

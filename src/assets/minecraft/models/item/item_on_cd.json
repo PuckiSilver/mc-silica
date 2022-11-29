@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "item/overlay",
+        "layer0": "item/overlay2",
         "layer1": "item/leather_boots"
     }
 }
