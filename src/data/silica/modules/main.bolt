@@ -1,15 +1,24 @@
 
-#-36 73 163
+function silica:load:
+    scoreboard objectives add mc-silica dummy
+    scoreboard players set #2 mc-silica 2
+    scoreboard players set #12000 mc-silica 12000
+    scoreboard players set #16384 mc-silica 16384
 
 function silica:cooldown:
-    scoreboard players set .12000 test 12000
-    scoreboard players set .2 test 2
-    execute store result score .gametime test run time query gametime
-    scoreboard players operation .gametime test /= .2 test
-    scoreboard players add .gametime test 5850
-    scoreboard players operation .gametime test %= .12000 test
-    scoreboard players add .gametime test 16384000
-    data remove block -36 73 163 Items
-    data modify block -36 73 163 Items append from entity @s SelectedItem
-    execute store result block -36 73 163 Items[0].tag.display.color int 1 run scoreboard players get .gametime test
-    item replace entity @s weapon.mainhand from block -36 73 163 container.0
+    # input; scoreboard mc-silica
+    # .cooldown     Cool-down in 0.1 seconds (600 = 1 minute)
+    # .cdr          Cool-down reduction in 0.1% (1000 = 100%)
+
+    execute store result score .cdUntil mc-silica run time query gametime
+    scoreboard players operation .cdUntil mc-silica /= #2 mc-silica
+    scoreboard players operation .cdUntil mc-silica += .cooldown mc-silica
+    scoreboard players operation .cdUntil mc-silica %= #12000 mc-silica
+
+    scoreboard players operation #cdr mc-silica = .cdr mc-silica
+    scoreboard players operation #cdr mc-silica *= #16384 mc-silica
+    scoreboard players operation .cdUntil mc-silica += #cdr mc-silica
+
+    data merge storage mc:silica {display:{color:0}}
+    execute store result storage mc:silica display.color int 1 run scoreboard players get .cdUntil mc-silica
+    item modify entity @s weapon.mainhand silica:set_cd_until

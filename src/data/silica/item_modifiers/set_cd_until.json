@@ -1,0 +1,17 @@
+[
+    {
+      "function": "minecraft:copy_nbt",
+      "source": {
+        "type": "minecraft:storage",
+        "source": "mc:silica"
+      },
+      "ops": [
+        {
+          "source": "display",
+          "target": "display",
+          "op": "replace"
+        }
+      ]
+    }
+  ]
+  
