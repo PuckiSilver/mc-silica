@@ -6,7 +6,7 @@ function silica:cooldown:
     scoreboard players set .2 test 2
     execute store result score .gametime test run time query gametime
     scoreboard players operation .gametime test /= .2 test
-    scoreboard players add .gametime test 5999
+    scoreboard players add .gametime test 5850
     scoreboard players operation .gametime test %= .12000 test
     scoreboard players add .gametime test 16384000
     data remove block -36 73 163 Items
