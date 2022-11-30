@@ -16,17 +16,18 @@ resource_pack:
 
 pipeline:
   - mecha
-  - plugins.silica.generateOverlay
+  - plugins.silica.generateTexture
+  - plugins.silica.generateModel
 
 meta:
   bolt:
     entrypoint: silica:main
   mc-silica:
-    - size: [16, 16]
-      cdMax: 5.8
-      shape: linear
-      save: minecraft:item/overlay3
-    - size: [128, 128]
-      cdMax: 5.8
-      shape: plugins/gradient_300x300.png
-      save: minecraft:item/overlay2
+    textures:
+      - size: [128, 128]
+        cdMax: 5.8
+        shape: plugins/gradient_300x300.png
+        path: minecraft:item/overlay2
+    models:
+      - path: minecraft:item/leather_horse_armor
+        overlay: minecraft:item/overlay
