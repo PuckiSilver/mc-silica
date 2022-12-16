@@ -23,7 +23,11 @@ meta:
     entrypoint: silica:main
   mc-silica:
     textures:
+        # size of the output texture
       - size: [128, 128]
+        # max cooldown of the ability before cooldown reduction is applied (in seconds)
         cdMax: 5.8
+        # shape can be linear, radial or a path to a b/w gradient file
         shape: plugins/gradient_300x300.png
+        # location to store the texture
         path: minecraft:item/overlay
