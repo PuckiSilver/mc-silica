@@ -17,7 +17,6 @@ resource_pack:
 pipeline:
   - mecha
   - plugins.silica.generateTexture
-  - plugins.silica.generateModel
 
 meta:
   bolt:
@@ -27,7 +26,4 @@ meta:
       - size: [128, 128]
         cdMax: 5.8
         shape: plugins/gradient_300x300.png
-        path: minecraft:item/overlay2
-    models:
-      - path: minecraft:item/leather_horse_armor
-        overlay: minecraft:item/overlay
+        path: minecraft:item/overlay
