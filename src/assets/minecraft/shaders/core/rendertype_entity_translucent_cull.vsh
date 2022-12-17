@@ -35,7 +35,7 @@ int getMaxCd(int green) {                   // retrieve max cooldown information
     int scaled = green* 10;
     int value;
     if (scaled < 1000) {
-        value = scaled / 10;                     // green of 1 - 99 => 0.1 - 9.9
+        value = scaled / 10;                // green of 1 - 99 => 0.1 - 9.9
     } else if (scaled > 1500) {
         value = (scaled - 1500) * 5 + 600;  // green of 151 - 255 => 65.0 - 585.0 (9,75min)
     } else {
