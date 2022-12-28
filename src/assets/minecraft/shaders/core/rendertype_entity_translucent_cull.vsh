@@ -72,6 +72,10 @@ void main() {
                 float time = GameTime;
                 if (cdUntil - cdMax < 0 && time > 0.5) time += cdMax - cdUntil - 1;     // handle wrapping
                 cooldown = (cdUntil - time) / cdMax;
+                if (cooldown < 0 || cooldown > 1) {
+                    gl_Position = vec4(2.0, 2.0, 2.0, 1.0); // discard vertex if unused
+                    cooldown = -1;
+                }
             }
         }
     }

@@ -21,7 +21,7 @@ out vec4 fragColor;
 void main() {
     vec4 pixel = texture(Sampler0, texCoord0); // pulled texture reading infront of mc-silica, no need to load the texture twice
     //// mc-silica ////
-    if (cooldown >= 0 && cooldown < 1) { // check if cooldown is set
+    if (cooldown >= 0) { // check if cooldown is set
         if (1 - cooldown <= pixel.b) { // if this pixel should show
             fragColor = vec4(1, 1, 1, 0.5); // color of the cooldown
             return;
