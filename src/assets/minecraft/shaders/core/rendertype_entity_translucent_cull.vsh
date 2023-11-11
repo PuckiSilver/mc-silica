@@ -57,7 +57,7 @@ void main() {
 
     //// mc-silica ////
     cooldown = -1; // set cooldown to -1 to avoid unvorseen behavior
-    if (-0.2 < gl_Position.z && gl_Position.z < -0.1) {                 // check if item is in hotbar
+    if (-0.02 < gl_Position.z && gl_Position.z < -0.01) {                 // check if item is in hotbar
         if (Color.r < 0.999 && Color.g < 0.999 && Color.b < 0.999) {    // check if item is colored
             // grab info from tint
             int tint = int(Color.r*255 * 65536 + Color.g*255 * 256 + Color.b*255 + 0.5);
