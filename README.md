@@ -97,4 +97,4 @@ Since the `GameTime` in vanilla shaders resets once every 24000 ticks (20 minute
 You can see these functions as a template of how you could implement a cool down system in your data pack, feel free to use anything from these function and implement them in your own data pack.
 
 ---
-check me out on [Planet Minecraft](https://www.planetminecraft.com/member/puckisilver/)
+[![PuckiSilver on GitHub](https://raw.githubusercontent.com/PuckiSilver/static-files/main/link_logos/GitHub.png)](https://github.com/PuckiSilver)[![PuckiSilver on modrinth](https://raw.githubusercontent.com/PuckiSilver/static-files/main/link_logos/modrinth.png)](https://modrinth.com/user/PuckiSilver)[![PuckiSilver on PlanetMinecraft](https://raw.githubusercontent.com/PuckiSilver/static-files/main/link_logos/PlanetMinecraft.png)](https://planetminecraft.com/m/PuckiSilver)[![PuckiSilver on PayPal](https://raw.githubusercontent.com/PuckiSilver/static-files/main/link_logos/PayPal.png)](https://paypal.me/puckisilver)
