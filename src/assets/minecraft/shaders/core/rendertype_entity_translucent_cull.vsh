@@ -26,7 +26,6 @@ out vec4 vertexColor;
 out vec2 texCoord0;
 out vec2 texCoord1;
 out vec2 texCoord2;
-out vec4 normal;
 out float cooldown; //// mc-silica ////
 
 //// mc-silica ////
@@ -52,7 +51,6 @@ void main() {
     texCoord0 = UV0;
     texCoord1 = UV1;
     texCoord2 = UV2;
-    normal = ProjMat * ModelViewMat * vec4(Normal, 0.0);
 
     //// mc-silica ////
     cooldown = -1; // set cooldown to -1 to avoid unvorseen behavior
